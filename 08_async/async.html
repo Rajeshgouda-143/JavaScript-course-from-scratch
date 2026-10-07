@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous</title>
+</head>
+<body>
+    <h1>Code With Me</h1>
+    <button id="stop">stop</button>
+</body>
+<script>
+
+    setTimeout(function(){
+        console.log("Rajesh")
+    },2000)
+
+    // or we can write like this also
+
+    const sayMyName = function(){
+        console.log("Hey Rajesh")
+    }
+
+    setTimeout(sayMyName, 200)
+
+    const changeText = function(){
+        document.querySelector("h1").innerHTML = "best javascript course"
+    }
+
+    const changeMe = setTimeout(changeText, 2000)
+
+    // to stop the excution before the code running.. // clearTimeout(changeMe);
+
+
+    //code 
+
+    document.querySelector("#stop").addEventListener("click", function(){
+        clearTimeout(changeMe)
+        console.log("STOPED")
+    },false)
+
+</script>
+</html>
