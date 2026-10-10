@@ -55,7 +55,7 @@ let age = 25;   // ❌ Error  not redeclared
 var is Function-scoped varible it can be reassigned and redeclared.  so that's why we prefer not to use var because of issue in block scope and functional scope.
 
 ex:-
-
+  
 var name = "Rajesh";
 name = "Rahul";       // ✅ reassigned
 var name = "Amit";    // ✅ redeclared
