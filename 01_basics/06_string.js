@@ -191,44 +191,79 @@ Returns the character at a particular index.
 let str = "Rajesh";
 console.log(str.charAt(0)); // R
 
-5. includes()
+charAt() does not support negative indexing in JavaScript.
+if the index is not present and A negative index returns an empty string ("").
+
+5. at() method in JavaScript
+Definition: The at() method is used to access a character at a specified index in a string. Unlike charAt(), it also supports negative indexes, allowing you to access characters starting from the end of the string.
+Example
+let str = "Rajesh";
+
+console.log(str.at(0));  // R
+console.log(str.at(2));  // j
+console.log(str.at(-1)); // h
+console.log(str.at(-2)); // s
+console.log(str.at(6)); // undefined
+
+imp:-Both methods access a character by index, but at() supports negative indexing, whereas charAt() does not.
+if the index is not present it will return undefined.
+
+6. includes()
 Checks whether a string contains something.
 "Rajesh".includes("Raj"); // true
 
-6. indexOf()
+console.log(str.includes(""));    // true
+console.log(str.includes());      // true
+
+If you don't pass anything to includes() in JavaScript, it returns true for a string.
+
+Why? When no argument is provided, JavaScript treats the search value as the string "undefined". However, the exact behavior is worth noting: for strings, the default search value is an empty string (""), not "undefined", so the result is true.
+
+7. indexOf()
 Returns the position of a character/string.
 "Rajesh".indexOf("j"); // 3
 If not found, it returns -1.
 
-7. slice()
+let str = "Rajesh";
+console.log(str.indexOf()); // -1
+
+console.log(str.indexOf("R"));   // 0  (found at index 0)
+console.log(str.indexOf("esh")); // 3  (found at index 3)
+console.log(str.indexOf("xyz")); // -1 (not found)
+console.log(str.indexOf(""));    // 0  (empty string)
+console.log(str.indexOf());      // -1 (searches for "undefined")
+
+If you don't pass any argument to indexOf() in JavaScript, it returns -1 if the string does not contain the text "undefined".
+
+8. slice()
 Extracts part of a string.
 let str = "JavaScript";
 console.log(str.slice(0, 4)); // Java
 
-8. substring()
+9. substring()
 Also extracts part of a string.
 "JavaScript".substring(0, 4); // Java
 
-9. replace()
+10. replace()
 Replaces part of a string.
 let str = "Hello Rajesh";
 console.log(str.replace("Rajesh", "Rahul"));
 // Hello Rahul
 
-10. trim()
+11. trim()
 Removes white spaces from the beginning and end.
 let str = "  Rajesh  ";
 console.log(str.trim()); // "Rajesh"
 
 
-11. split()
+12. split()
 Converts a string into an array.
 let str = "Python,React,SQL";
 console.log(str.split(","));
 Output:
 ["Python", "React", "SQL"]
 
-12. concat()
+13. concat()
 Joins strings.
 let a = "Hello";
 let b = "Rajesh";
@@ -237,15 +272,42 @@ console.log(a.concat(" ", b));
 
 But usually we use + or template literals instead.
 
-13. startsWith()
+14. startsWith()
 "JavaScript".startsWith("Java"); // true
 
-14. endsWith()
+15. endsWith()
 "JavaScript".endsWith("Script"); // true
 
-15. charCodeAt()
-Returns the Unicode value of a character.
-"ABC".charCodeAt(0); // 65
+16. charCodeAt()
+The charCodeAt() method returns the UTF-16 code unit value (a number) of the character at the specified index in a string.
+
+Example:-
+let str = "ABC";
+
+console.log(str.charCodeAt(0)); // 65
+console.log(str.charCodeAt(1)); // 66
+console.log(str.charCodeAt(2)); // 67
+
+
+Why?
+Each character has a numeric code value:
+Character	Index	charCodeAt() 
+A	          0	        65
+B	          1	        66
+C	          2	        67
+a	          0	        97
+0	          0	        48
+
+Remember that uppercase and lowercase letters have different code values.
+
+What if the index doesn't exist?
+let str = "ABC";
+
+console.log(str.charCodeAt(3));  // NaN
+console.log(str.charCodeAt(-1)); // NaN
+
+
+If the index is out of range, charCodeAt() returns NaN.
 
 */
 
