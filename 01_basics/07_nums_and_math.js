@@ -95,6 +95,29 @@ Checks whether the value is actually NaN.
 console.log(Number.isNaN(NaN)); // true
 console.log(Number.isNaN(10));  // false
 
+console.log(Number.isNaN(undefined)); // false
+console.log(Number.isNaN(null));      // false
+
+Number.isNaN() returns true only when the given value is actually the number NaN. It does not convert other values to numbers before checking.
+- undefined is not the number NaN → false
+- null is not the number NaN → false
+
+console.log(Number.isNaN(NaN));          // true
+console.log(Number.isNaN(undefined));    // false
+console.log(Number.isNaN(null));         // false
+console.log(Number.isNaN("hello"));      // false
+console.log(Number.isNaN("123"));        // false
+console.log(Number.isNaN(10 / "hello")); // true
+
+The / operator tries to convert "hello" into a number.
+
+Because "hello" is not a valid numeric string, the conversion results in NaN.
+
+console.log(Number.isNaN("hello"));      // false
+console.log(Number.isNaN(Number("hello"))); // true
+console.log(Number.isNaN(10 / "hello")); // true
+console.log(Number.isNaN(10 / "2"));     // false
+
 7. Number.isFinite()
 Checks whether a value is a finite number.
 
@@ -106,6 +129,16 @@ console.log(Number.isFinite(Infinity)); // false
 Checks whether an integer is within JavaScript's safe integer range.
 
 console.log(Number.isSafeInteger(100)); // true
+
+console.log(Number.isSafeInteger(100));                 // true
+console.log(Number.isSafeInteger(10.5));                // false
+console.log(Number.isSafeInteger("100"));               // false
+console.log(Number.isSafeInteger(9007199254740991));    // true
+console.log(Number.isSafeInteger(9007199254740992));    // false
+
+Important: It does not convert strings to numbers. The value must already be a number and a safe integer.
+
+
 Important conversion methods
 
 9. Number.parseInt()
